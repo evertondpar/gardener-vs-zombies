@@ -12,7 +12,7 @@ public class MundoBase extends TelaBase
 {
     //quantidade de inimigos vivos na fase.
     private int inimigosVivos;
-
+    private boolean faseIniciada;
     /**
      * Constructor for objects of class MundoBase.
      * 
@@ -21,5 +21,13 @@ public class MundoBase extends TelaBase
     {    
         super(background);
         this.inimigosVivos = inimigosVivos;
+    }
+    
+    public void iniciarFase(){
+        faseIniciada = true;
+    }
+    
+    public boolean getFaseIniciada(){
+        return faseIniciada;
     }
 }

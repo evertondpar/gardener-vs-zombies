@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FaseUm extends MundoBase
 {
-
     /**
      * Constructor for objects of class FaseUm.
      * 
@@ -18,6 +17,12 @@ public class FaseUm extends MundoBase
     {
         super("fase1.png",5);
         montarCenario();
+    }
+    
+    public void act(){
+        if(getFaseIniciada()){
+            showText("Se prepare! Os zumbis estão chegando!", 600, 50);
+        }
     }
     
     /**
@@ -31,7 +36,5 @@ public class FaseUm extends MundoBase
         PoderVerde poderVerde = new PoderVerde();
         addObject(jardineiro, 300, 580);
         addObject(poderVerde, 600, 580);
-        
-        
     }
 }

@@ -88,6 +88,7 @@ public class Jardineiro extends Actor
             
             //troca imagem do jardineiro
             definirImagem("jardineiro_"+nomePoder+".png");
+            
         }
     }
     

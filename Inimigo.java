@@ -12,10 +12,11 @@ public class Inimigo extends Actor
     private int velocidade;
     private int dano;
     
-    public Inimigo(int vida, int velocidade, int dano){
+    public Inimigo(int vida, int velocidade, int dano, String imagemInimigo){
         this.vida = vida;
         this.velocidade = velocidade;
         this.dano = dano;
+        definirImagem(imagemInimigo);
     }
     /**
      * Act - do whatever the Inimigo wants to do. This method is called whenever
@@ -24,5 +25,11 @@ public class Inimigo extends Actor
     public void act()
     {
         // Add your action code here.
+    }
+    
+    private void definirImagem(String diretorioImagem){
+        GreenfootImage imagem = new GreenfootImage(diretorioImagem);
+        imagem.scale(80, 120); 
+        setImage(imagem);
     }
 }
