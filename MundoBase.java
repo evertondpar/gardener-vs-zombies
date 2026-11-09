@@ -2,7 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class MundoBase here.
+ * Classe do mundo base para as fases, guardando a quantidade de inimigos
+ * restantes a eliminar.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -16,9 +17,9 @@ public class MundoBase extends TelaBase
      * Constructor for objects of class MundoBase.
      * 
      */
-    public MundoBase(int inimigosVivos)
+    public MundoBase(String background,int inimigosVivos)
     {    
-        super("fase1.png");
+        super(background);
         this.inimigosVivos = inimigosVivos;
     }
 }

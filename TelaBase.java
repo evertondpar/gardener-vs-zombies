@@ -16,7 +16,7 @@ public class TelaBase extends World
      */
     public TelaBase(String diretorioBackground)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        //Cria a tela com 1200x800 pixels
         super(1200, 800, 1); 
         carregarFundo(diretorioBackground);
     }
