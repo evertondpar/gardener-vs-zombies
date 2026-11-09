@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Zumbi extends Inimigo
 {
     public Zumbi(){
-        super(10, 1, 10, "");
+        super(10, 1, 10, "zumbi.png");
         
     }
     /**
@@ -18,6 +18,13 @@ public class Zumbi extends Inimigo
      */
     public void act()
     {
-        // Add your action code here.
+        setLocation(getX() - obterVelocidade(), getY());
+        if (getX() <= 0) {
+            FaseUm fase = (FaseUm) getWorld();    
+            // Faz o jardineiro/base perder 1 de vida
+            fase.perderVida();
+            getWorld().removeObject(this);
+        }
     }
+    
 }

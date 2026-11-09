@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FaseUm extends MundoBase
 {
+    private int pontuacao = 0;
+    private int vida = 5 ;
+    
     /**
      * Constructor for objects of class FaseUm.
      * 
@@ -17,11 +20,22 @@ public class FaseUm extends MundoBase
     {
         super("fase1.png",5);
         montarCenario();
+        iniciarFase();
     }
     
     public void act(){
         if(getFaseIniciada()){
             showText("Se prepare! Os zumbis estão chegando!", 600, 50);
+            showText("Pontos: "+ pontuacao, 100, 30);
+            showText("Vida : " + vida, 100, 50);
+        }
+    }
+    
+    public void perderVida() {
+        vida--;
+        if (vida <= 0) {
+            showText("DERROTA! Os zumbis invadiram!", getWidth()/2, getHeight()/2); //adiciona no meio
+            Greenfoot.stop(); // Para o jogo imediatamente
         }
     }
     
@@ -31,10 +45,22 @@ public class FaseUm extends MundoBase
      * 
      */
     private void montarCenario() {
-        
+        Zumbi zumbi = new Zumbi();
         Jardineiro jardineiro = new Jardineiro();
         PoderVerde poderVerde = new PoderVerde();
+        
         addObject(jardineiro, 300, 580);
         addObject(poderVerde, 600, 580);
+        
+        addObject(new Zumbi(), 1050, 300);
+        addObject(new Zumbi(), 1100, 500);
+        addObject(new ZumbiForte(), 1150, 400);
+    }
+    
+    /**
+     * Método que será chamado quando um zumbi morrer
+     */
+    public void adicionarPontos(int pontos) {
+        pontuacao=pontuacao + pontos;
     }
 }
