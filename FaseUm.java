@@ -9,9 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FaseUm extends MundoBase
 {
-    private int pontuacao = 0;
-    private int vida = 5 ;
-    private int contadorItem = 0; //tempo para gerar um novo item no mapa
     private int contadorLapide = 0; // tempo para gerar uma nova lapide
     private boolean poderColetado = false; //controla se o jogador já pegou o poder
     private int temporizadorZumbis = 0; //nascimento dos zumbis a cada periodo
@@ -30,8 +27,7 @@ public class FaseUm extends MundoBase
     public void act(){
         if(getFaseIniciada()){
             showText("Se prepare! Os zumbis estão chegando!", 600, 50);
-            showText("Pontos: "+ pontuacao, 100, 30);
-            showText("Vida : " + vida, 100, 50);
+            showText("Pontos: "+ getPontuacao(), 100, 30);
 
             if(!poderColetado && getObjects(PoderVerde.class).isEmpty()){
                 poderColetado = true;
@@ -42,14 +38,6 @@ public class FaseUm extends MundoBase
                 gerarZumbi();
                 gerarLapide();
             }
-        }
-    }
-
-    public void perderVida() {
-        vida--;
-        if (vida <= 0) {
-            showText("DERROTA! Os zumbis invadiram!", getWidth()/2, getHeight()/2); //adiciona no meio
-            Greenfoot.stop(); // Para o jogo imediatamente
         }
     }
 
@@ -88,13 +76,6 @@ public class FaseUm extends MundoBase
             }
         }
 
-    }
-
-    /**
-     * Método que será chamado quando um zumbi morrer
-     */
-    public void adicionarPontos(int pontos) {
-        pontuacao=pontuacao + pontos;
     }
 
     //Gera lápides (obstáculos) na tela a cada 10 segundos (600 frames),

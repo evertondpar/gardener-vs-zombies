@@ -28,6 +28,11 @@ public class Inimigo extends Actor
      */
     public void act()
     {
+        if(verificarInvasao()){
+            return;
+        }
+        
+        setLocation(getX() - obterVelocidade(), getY());
         //condicao para descongelar o zumbi, depois de um tempo(5s)
         if(tempoCongelado > 0){
             tempoCongelado--;
@@ -71,5 +76,22 @@ public class Inimigo extends Actor
             fase.removeObject(this);
             fase.decrementarInimigos();
         }
+    }
+
+    private boolean verificarInvasao() {
+        if (getX() <= 0) {
+            // Pega o mundo base
+            MundoBase mundo = (MundoBase) getWorld();
+            
+            if (mundo != null) {
+                mundo.executarDerrota();
+            }
+            
+            // Remove o zumbi do mundo após a invasão
+            getWorld().removeObject(this);
+            
+            return true;
+        }
+        return false;
     }
 }

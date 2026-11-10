@@ -14,6 +14,7 @@ public class MundoBase extends TelaBase
     private int inimigosVivos;
     private int inimigosNaTela;
     private boolean faseIniciada;
+    private int pontuacao = 0;
     /**
      * Constructor for objects of class MundoBase.
      * 
@@ -50,5 +51,21 @@ public class MundoBase extends TelaBase
     
     public void aumentarInimigosNaTela(int quantidade){
         inimigosNaTela += quantidade;
+    }
+
+    public void executarDerrota() {
+            showText("DERROTA! Os zumbis invadiram!", getWidth()/2, getHeight()/2); //adiciona no meio
+            Greenfoot.stop(); // Para o jogo imediatamente
+    }
+    
+    /**
+     * Método que será chamado quando um zumbi morrer
+     */
+    public void adicionarPontos(int pontos) {
+        pontuacao=pontuacao + pontos;
+    }
+    
+    public int getPontuacao(){
+        return pontuacao;
     }
 }
