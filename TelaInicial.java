@@ -22,7 +22,6 @@ public class TelaInicial extends TelaBase
     //sobreescrita do método act do próprio greenfoot
     @Override
     public void act(){
-        Greenfoot.setWorld(new FaseUm());
         iniciarJogo();
     }
     

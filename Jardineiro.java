@@ -10,13 +10,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Jardineiro extends Actor
 {
-    private int vida;
     private String poderAtual;
     private static int velocidade = 3;
     private int tempoEsperaTiro = 0;
-    
+    private int tempoImunidade = 0;
     public Jardineiro () {
-        this.vida = 100;
         this.poderAtual = "";
 
         definirImagem("jardineiro.png");
@@ -31,11 +29,12 @@ public class Jardineiro extends Actor
         movimentar();
         coletarItem();
         atirarProjetil();
-        
+
         //decrementa o couldown do tiro a cada frame
         if (tempoEsperaTiro > 0) {
             tempoEsperaTiro--;
         }
+        verificarColisaoComInimigo();
     }
 
     /**
@@ -61,9 +60,30 @@ public class Jardineiro extends Actor
 
         // Atualiza a posição do personagem na tela
         setLocation(getX() + distanciaX, getY() + distanciaY);
+
+    }
+    
+    /**
+     * Método que identifica colisão com inimigo para
+     * diminuir a pontuação
+     */
+    private void verificarColisaoComInimigo(){
+        if (isTouching(Inimigo.class)) {
+            // Recua e não deixa atravessar o zumbi
+            setLocation(getX() - 4, getY());
+            if(tempoImunidade == 0){
+                MundoBase mundo = (MundoBase) getWorld();
+                mundo.diminuirPontos(5);
+                tempoImunidade = 60;
+            }
+
+        }
+        if (tempoImunidade > 0) {
+            tempoImunidade--;
+        }
     }
 
-     /**
+    /**
      * Atualiza o poder atual do personagem.
      */
     private void setPoderAtual(String nomePoder){
@@ -85,7 +105,7 @@ public class Jardineiro extends Actor
             setPoderAtual(nomePoder);
             //remove item do mundo
             item.removerItem();
-            
+
             //troca imagem do jardineiro dependendo do seu poder
             if(nomePoder.equals("poderAzul")){
                 definirImagem("jardineiro_poderGelo.png");
@@ -94,7 +114,7 @@ public class Jardineiro extends Actor
             }
         }
     }
-    
+
     /**
      * Método para atirar o projétil caso tenha um poder.
      */
@@ -116,7 +136,7 @@ public class Jardineiro extends Actor
             tempoEsperaTiro = 60;
         }
     }
-    
+
     /**
      * Método para definir imagem do jardineiro.
      */

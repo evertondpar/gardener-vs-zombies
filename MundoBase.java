@@ -70,6 +70,13 @@ public class MundoBase extends TelaBase
         pontuacao=pontuacao + pontos;
     }
     
+    public void diminuirPontos(int pontos) {
+        if(pontuacao > 0){
+        pontuacao=pontuacao - pontos;
+        }
+        
+    }
+    
     public int getPontuacao(){
         return pontuacao;
     }
