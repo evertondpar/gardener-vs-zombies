@@ -54,7 +54,12 @@ public class MundoBase extends TelaBase
     }
 
     public void executarDerrota() {
-            showText("DERROTA! Os zumbis invadiram!", getWidth()/2, getHeight()/2); //adiciona no meio
+            Greenfoot.setWorld(new TelaDerrota(pontuacao));
+            Greenfoot.stop(); // Para o jogo imediatamente
+    }
+    
+    public void executarVitoria() {
+            Greenfoot.setWorld(new TelaVitoria(pontuacao));
             Greenfoot.stop(); // Para o jogo imediatamente
     }
     

@@ -56,6 +56,7 @@ public class FaseUm extends MundoBase
     private void gerarZumbi(){
         //se acabar os inimigos, não gera mais
         if(getInimigosVivos() <= 0){
+            executarVitoria();
             return;
         }
 
