@@ -68,7 +68,8 @@ public class Inimigo extends Actor
             } else {
                 fase.adicionarPontos(10);
             }
-            getWorld().removeObject(this);
+            fase.removeObject(this);
+            fase.decrementarInimigos();
         }
     }
 }

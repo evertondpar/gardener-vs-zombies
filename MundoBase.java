@@ -12,6 +12,7 @@ public class MundoBase extends TelaBase
 {
     //quantidade de inimigos vivos na fase.
     private int inimigosVivos;
+    private int inimigosNaTela;
     private boolean faseIniciada;
     /**
      * Constructor for objects of class MundoBase.
@@ -21,6 +22,7 @@ public class MundoBase extends TelaBase
     {    
         super(background);
         this.inimigosVivos = inimigosVivos;
+        this.inimigosNaTela = 0;
     }
     
     public void iniciarFase(){
@@ -29,5 +31,24 @@ public class MundoBase extends TelaBase
     
     public boolean getFaseIniciada(){
         return faseIniciada;
+    }
+    
+    public int getInimigosVivos() {
+        return inimigosVivos;
+    }
+    
+    public int getInimigosNaTela() {
+        return inimigosNaTela;
+    }
+    
+    public void decrementarInimigos() {
+        if (inimigosVivos > 0) {
+            inimigosVivos--;
+            inimigosNaTela--;
+        }
+    }
+    
+    public void aumentarInimigosNaTela(int quantidade){
+        inimigosNaTela += quantidade;
     }
 }
