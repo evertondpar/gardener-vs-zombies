@@ -23,6 +23,7 @@ public class PoderVerde extends ItemColetavel
     public void act()
     {
         mover();
+        
     }
     
     /**

@@ -86,9 +86,12 @@ public class Jardineiro extends Actor
             //remove item do mundo
             item.removerItem();
             
-            //troca imagem do jardineiro
-            definirImagem("jardineiro_"+nomePoder+".png");
-            
+            //troca imagem do jardineiro dependendo do seu poder
+            if(nomePoder.equals("poderAzul")){
+                definirImagem("jardineiro_poderGelo.png");
+            }else{
+                definirImagem("jardineiro_"+nomePoder+".png");
+            }
         }
     }
     
@@ -98,15 +101,18 @@ public class Jardineiro extends Actor
     private void atirarProjetil(){
         //verifica se apertou "espaço", se o poder é "poderVerde" e se o couldown já foi zerado
         if(Greenfoot.isKeyDown("space") 
-        && poderAtual.equals("poderVerde") 
+        && !poderAtual.equals("") 
         && tempoEsperaTiro == 0){
-            //cria o projetil
-            ProjetilVerde tiro = new ProjetilVerde();
-            
-            //faz ele aparecer na frente do jardineiro
-            getWorld().addObject(tiro, getX() + 30, getY());
-            
-            //define couldown
+            //verifica qual poder foi coletado
+            if(poderAtual.equals("poderVerde")){
+                //cria o projetil
+                ProjetilVerde tiro = new ProjetilVerde();
+                getWorld().addObject(tiro, getX() + 30, getY());
+            }else if(poderAtual.equals("poderAzul")){
+                ProjetilAzul tiro = new ProjetilAzul();
+                getWorld().addObject(tiro, getX() + 30, getY());
+            }
+            //define couldown(tempo entre os tiros)
             tempoEsperaTiro = 60;
         }
     }

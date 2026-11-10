@@ -10,7 +10,7 @@ public class ZumbiForte extends Inimigo
      * Constructor for objects of class ZumbiForte
      */
     public ZumbiForte(){
-        super(15, 1, 10, "zumbi_forte.png");
+        super(12, 1, 10, "zumbi_forte.png");
     }
 
     /**
@@ -21,6 +21,7 @@ public class ZumbiForte extends Inimigo
      */
     public void act()
     {
+        super.act(); //chama a contagem de congelamento(sem isso nao estava funcionando)
         setLocation(getX() - obterVelocidade(), getY());
         if (getX() <= 0) {
             FaseUm fase = (FaseUm) getWorld();    

@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Zumbi extends Inimigo
 {
     public Zumbi(){
-        super(10, 1, 10, "zumbi.png");
+        super(6, 1, 10, "zumbi.png");
         
     }
     /**
@@ -18,6 +18,7 @@ public class Zumbi extends Inimigo
      */
     public void act()
     {
+        super.act(); //chama a contagem de congelamento(sem isso nao estava funcionando)
         setLocation(getX() - obterVelocidade(), getY());
         if (getX() <= 0) {
             FaseUm fase = (FaseUm) getWorld();    

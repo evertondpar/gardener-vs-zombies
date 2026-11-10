@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ProjetilVerde extends Projetil
 {
     public ProjetilVerde(){
-        super("projetil_padrao.png");
+        super("projetil_padrao.png", "verde");
     }
     /**
      * Act - do whatever the ProjetilVerde wants to do. This method is called whenever
