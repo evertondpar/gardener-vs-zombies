@@ -15,6 +15,7 @@ public class MundoBase extends TelaBase
     private int inimigosNaTela;
     private boolean faseIniciada;
     private int pontuacao = 0;
+    private GreenfootSound musicaDeFundo = new GreenfootSound("musica_fundo.mp3");
     /**
      * Constructor for objects of class MundoBase.
      * 
@@ -54,13 +55,15 @@ public class MundoBase extends TelaBase
     }
 
     public void executarDerrota() {
-            Greenfoot.setWorld(new TelaDerrota(pontuacao));
-            Greenfoot.stop(); // Para o jogo imediatamente
+        musicaDeFundo.stop();
+        Greenfoot.setWorld(new TelaDerrota(pontuacao));
+        Greenfoot.stop(); // Para o jogo imediatamente
     }
     
     public void executarVitoria() {
-            Greenfoot.setWorld(new TelaVitoria(pontuacao));
-            Greenfoot.stop(); // Para o jogo imediatamente
+        musicaDeFundo.stop();
+        Greenfoot.setWorld(new TelaVitoria(pontuacao));
+        Greenfoot.stop(); // Para o jogo imediatamente
     }
     
     /**
@@ -72,12 +75,19 @@ public class MundoBase extends TelaBase
     
     public void diminuirPontos(int pontos) {
         if(pontuacao > 0){
-        pontuacao=pontuacao - pontos;
+            pontuacao=pontuacao - pontos;
         }
-        
     }
     
     public int getPontuacao(){
         return pontuacao;
+    }
+    
+    public void iniciarMusica(){
+        //toca a musica de fundo em loop
+        if(!musicaDeFundo.isPlaying()){
+            musicaDeFundo.setVolume(40);
+            musicaDeFundo.playLoop();
+        }
     }
 }

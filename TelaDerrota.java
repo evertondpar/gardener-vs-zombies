@@ -17,5 +17,6 @@ public class TelaDerrota extends TelaBase
     {
         super("derrota.png");
         showText("Pontuação: " + pontuacao, getWidth()/2, getHeight()/4);
+        Greenfoot.playSound("derrotado.wav");
     }
 }

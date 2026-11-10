@@ -99,6 +99,7 @@ public class Jardineiro extends Actor
 
         //verifica se o item é existe
         if(item != null){
+            Greenfoot.playSound("coleta_poder.mp3");
             //pega nome do poder concedido pelo item
             String nomePoder = item.getNomePoder();
             //atualiza poder atual
@@ -123,6 +124,7 @@ public class Jardineiro extends Actor
         if(Greenfoot.isKeyDown("space") 
         && !poderAtual.equals("") 
         && tempoEsperaTiro == 0){
+            Greenfoot.playSound("poder.mp3");
             //verifica qual poder foi coletado
             if(poderAtual.equals("poderVerde")){
                 //cria o projetil

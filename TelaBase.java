@@ -19,6 +19,7 @@ public class TelaBase extends World
         //Cria a tela com 1200x800 pixels
         super(1200, 800, 1); 
         carregarFundo(diretorioBackground);
+        
     }
     
     private void carregarFundo(String diretorioImagem){

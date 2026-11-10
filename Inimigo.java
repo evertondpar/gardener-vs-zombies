@@ -65,6 +65,7 @@ public class Inimigo extends Actor
     
     public void receberDano(int quantidadeDeDano){
         vida =vida- quantidadeDeDano;
+        Greenfoot.playSound("acerto_zumbi.mp3");
         if (vida<=0) {
             FaseUm fase = (FaseUm) getWorld();
             // Zumbi rápido dá mais pontos

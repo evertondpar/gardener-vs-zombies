@@ -59,6 +59,7 @@ public class Projetil extends Actor
         }
         Actor obstaculo = getOneIntersectingObject(Obstaculo.class);
         if(obstaculo != null){
+            
             Obstaculo obstaculoAtingido = (Obstaculo) obstaculo;
             obstaculoAtingido.receberDano(1);
             getWorld().removeObject(this);

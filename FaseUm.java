@@ -22,6 +22,7 @@ public class FaseUm extends MundoBase
         super("fase1.png",9);
         montarCenario();
         iniciarFase();
+        iniciarMusica();
     }
 
     public void act(){

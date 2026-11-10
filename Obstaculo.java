@@ -26,6 +26,7 @@ public class Obstaculo extends Actor
     
     public void receberDano(int dano){
         vidaObstaculo -= dano;
+        Greenfoot.playSound("acerto_objeto.wav");
         if(vidaObstaculo <= 0){
             getWorld().removeObject(this);
         }
