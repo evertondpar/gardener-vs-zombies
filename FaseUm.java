@@ -19,7 +19,7 @@ public class FaseUm extends MundoBase
      */
     public FaseUm()
     {
-        super("fase1.png",8);
+        super("fase1.png",9);
         montarCenario();
         iniciarFase();
     }
@@ -66,13 +66,15 @@ public class FaseUm extends MundoBase
             //a cada 5 seg surge nova onde de zumbis
             if(temporizadorZumbis >= 300){
                 temporizadorZumbis = 0;
-                aumentarInimigosNaTela(2);
+                aumentarInimigosNaTela(3);
                 //gera um zumbis normais e um fortes
                 //ambos com alturas aleatorias, porem na extrema direita do mapa
                 int posYForte = Greenfoot.getRandomNumber(450) + 150;
                 addObject(new ZumbiForte(), 1150, posYForte);
-                int posYNormal = Greenfoot.getRandomNumber(450) + 150;
-                addObject(new Zumbi(), 1150, posYNormal);
+                int posYNormalUm = Greenfoot.getRandomNumber(450) + 150;
+                addObject(new Zumbi(), 1150, posYNormalUm);
+                int posYNormalDois = Greenfoot.getRandomNumber(450) + 150;
+                addObject(new Zumbi(), 1150, posYNormalDois);
 
             }
         }
