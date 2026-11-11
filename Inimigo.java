@@ -13,6 +13,8 @@ public class Inimigo extends Actor
     private int velocidadeOriginal; //guarda a velocidade com que o zumbi nasceu para o congelamento acabar
     private int dano;
     private int tempoCongelado = 0;
+    private int direcaoDesvio = 0; //usado para o zumbi desviar de um obstaculo criado
+    private static final int VELOCIDADE_DESVIO = 5;
     
     public Inimigo(int vida, int velocidade, int dano, String imagemInimigo){
         this.vida = vida;
@@ -32,7 +34,8 @@ public class Inimigo extends Actor
             return;
         }
         
-        setLocation(getX() - obterVelocidade(), getY());
+        mover();
+        
         //condicao para descongelar o zumbi, depois de um tempo(5s)
         if(tempoCongelado > 0){
             tempoCongelado--;
@@ -41,6 +44,45 @@ public class Inimigo extends Actor
                 velocidade = velocidadeOriginal;
             }
         }
+    }
+    
+    private void mover(){
+        // se está desviando, continua o desvio (0 = esta andando)
+        if(direcaoDesvio != 0){
+            desviar();
+            return;
+        }
+        int xAntigo = getX();
+        setLocation(xAntigo - obterVelocidade(), getY());
+        //se bater na lápide, escolhe um lado aleatório para desviar
+        if(isTouching(Obstaculo.class)){
+            setLocation(xAntigo, getY());
+            direcaoDesvio = (Greenfoot.getRandomNumber(2) == 0) ? -1 : 1;
+        }
+    }
+    
+    private void desviar(){
+        int novoY = getY() + direcaoDesvio * VELOCIDADE_DESVIO;
+
+        // se chegou no limite do mapa, inverte o lado para nao agarrar
+        if(novoY < 150 || novoY > 640){
+            direcaoDesvio = -direcaoDesvio;
+            return;
+        }
+        setLocation(getX(), novoY);
+
+        // a cada frame tenta voltar a andar para a esquerda
+        int xAntigo = getX();
+        setLocation(xAntigo - obterVelocidade(), getY());
+        if(isTouching(Obstaculo.class)){
+            setLocation(xAntigo, getY()); //continua desviando
+        } else {
+            direcaoDesvio = 0;            //segue caminhando
+        }
+    }
+
+    public boolean estaDesviando(){
+        return direcaoDesvio != 0;
     }
     
     //o projetil azul chama esse metodo para congelar o zumbi por 5s

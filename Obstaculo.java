@@ -16,7 +16,7 @@ public class Obstaculo extends Actor
     public Obstaculo(int vida, String imagemObstaculo){
         this.vidaObstaculo = vida;
         GreenfootImage imagem = new GreenfootImage(imagemObstaculo);
-        imagem.scale(70,80);
+        imagem.scale(60,70);
         setImage(imagem);
     }
 

@@ -74,8 +74,21 @@ public class Jardineiro extends Actor
             limiteY = 640;
         }
         
+        // Guarda a posição atual e tenta se mover
+        // OBS - se o teste de colisão estivesse antes do movimento daria errado, pois o 
+        //jardineiro ainda não se moveu, então isTouching dá sempre o mesmo resultado que 
+        //jaEstavaEncostando, e o if nunca dispara
+        int xAntigo = getX();
+        int yAntigo = getY();
+        boolean jaEstavaEncostando = isTouching(Obstaculo.class);
+        
         // Atualiza a posição do personagem na tela
         setLocation(limiteX, limiteY);
+
+        // se o jardineiro vai entrar em uma lápide, ele volta para a posicao valida
+        if (!jaEstavaEncostando && isTouching(Obstaculo.class)) {
+            setLocation(xAntigo, yAntigo);
+        }
 
     }
     

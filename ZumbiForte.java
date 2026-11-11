@@ -20,17 +20,23 @@ public class ZumbiForte extends Inimigo
     }
     
     private void alinharComJardineiro(){
-        if(getWorld() != null){
-            java.util.List<Jardineiro> jardineiros = getWorld().getObjects(Jardineiro.class);
+        // não se alinha enquanto está desviando de uma lápide
+        if(estaDesviando() || getWorld() == null){
+            return;
+        }
+        java.util.List<Jardineiro> jardineiros = getWorld().getObjects(Jardineiro.class);
         if (!jardineiros.isEmpty()) {
             Jardineiro jardineiro = jardineiros.get(0);
+            int yAntigo = getY();
             if (jardineiro.getY() > getY()) {
                 setLocation(getX(), getY() + 1);
             } else if (jardineiro.getY() < getY()) {
                 setLocation(getX(), getY() - 1);
             }
+            // não entra na lápide ao se alinhar
+            if (isTouching(Obstaculo.class)) {
+                setLocation(getX(), yAntigo);
+            }
         }
-        }
-        
     }
 }
