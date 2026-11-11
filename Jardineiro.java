@@ -57,9 +57,25 @@ public class Jardineiro extends Actor
         if (Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")) {
             distanciaX += velocidade;
         }
-
+        
+        //Limita o espaco de locomocao do jardineiro
+        int limiteX = getX() + distanciaX;
+        int limiteY = getY() + distanciaY;
+        if(limiteX < 40){
+            limiteX = 40;
+        }
+        if(limiteX > 1160){
+            limiteX = 1160;
+        }
+        if(limiteY < 150){
+            limiteY = 150;
+        }
+        if(limiteY > 640){
+            limiteY = 640;
+        }
+        
         // Atualiza a posição do personagem na tela
-        setLocation(getX() + distanciaX, getY() + distanciaY);
+        setLocation(limiteX, limiteY);
 
     }
     
