@@ -10,8 +10,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class FaseUm extends MundoBase
 {
     private int contadorLapide = 0; // tempo para gerar uma nova lapide
-    private boolean poderColetado = false; //controla se o jogador já pegou o poder
-    private int temporizadorZumbis = 0; //nascimento dos zumbis a cada periodo
 
     /**
      * Constructor for objects of class FaseUm.
@@ -29,13 +27,13 @@ public class FaseUm extends MundoBase
         if(getFaseIniciada()){
             showText("Se prepare! Os zumbis estão chegando!", 600, 50);
             showText("Pontos: "+ getPontuacao(), 100, 30);
-
-            if(!poderColetado && getObjects(PoderVerde.class).isEmpty()){
-                poderColetado = true;
+            boolean poderFoiColetado = super.obterPoderColetado();
+            if(!poderFoiColetado && getObjects(PoderVerde.class).isEmpty()){
+                super.setPoderColetado(true);
             }
 
             //so comeca a gerar zumbi e lapide se o poder ja foi coletado
-            if(poderColetado){
+            if(poderFoiColetado){
                 gerarZumbi();
                 gerarLapide();
             }
@@ -60,18 +58,19 @@ public class FaseUm extends MundoBase
             executarVitoria();
             return;
         }
-
+        
         if(getInimigosNaTela() == 0){
-            temporizadorZumbis++;
-
+            int temporizadorInimigos = obterTemporizadorZumbis();
+            super.setTemporizadorZumbis(temporizadorInimigos + 1);
+            
             //a cada 5 seg surge nova onde de zumbis
-            if(temporizadorZumbis >= 300){
-                temporizadorZumbis = 0;
+            if(temporizadorInimigos >= 300){
+                super.setTemporizadorZumbis(0);
                 aumentarInimigosNaTela(3);
                 //gera um zumbis normais e um fortes
                 //ambos com alturas aleatorias, porem na extrema direita do mapa
                 int posYForte = Greenfoot.getRandomNumber(450) + 150;
-                addObject(new ZumbiCorredor(), 1150, posYForte);
+                addObject(new ZumbiForte(), 1150, posYForte);
                 int posYNormalUm = Greenfoot.getRandomNumber(450) + 150;
                 addObject(new Zumbi(), 1150, posYNormalUm);
                 int posYNormalDois = Greenfoot.getRandomNumber(450) + 150;

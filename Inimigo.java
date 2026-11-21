@@ -105,15 +105,15 @@ public class Inimigo extends Actor
         vida =vida- quantidadeDeDano;
         Greenfoot.playSound("acerto_zumbi.mp3");
         if (vida<=0) {
-            FaseUm fase = (FaseUm) getWorld();
+            MundoBase mundo = (MundoBase) getWorld();
             // Zumbi rápido dá mais pontos
             if (this instanceof ZumbiForte) {
-                fase.adicionarPontos(20);
+                mundo.adicionarPontos(20);
             } else {
-                fase.adicionarPontos(10);
+                mundo.adicionarPontos(10);
             }
-            fase.removeObject(this);
-            fase.decrementarInimigos();
+            mundo.removeObject(this);
+            mundo.decrementarInimigos();
         }
     }
 

@@ -29,7 +29,7 @@ public class TelaInicial extends TelaBase
     //identifica o clique da tecla enter e inica jogo
     public void iniciarJogo(){
         if(Greenfoot.isKeyDown("enter")){
-            Greenfoot.setWorld(new FaseUm());
+            Greenfoot.setWorld(new FaseDois());
         }
     }
     
