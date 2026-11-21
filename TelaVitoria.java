@@ -15,8 +15,8 @@ public class TelaVitoria extends TelaBase
      */
     public TelaVitoria(int pontuacao)
     {
-        super("vitoria.png");
+        super("vitoria.jpg");
         showText("Pontuação: " + pontuacao, getWidth()/2, getHeight()/4);
-        Greenfoot.playSound("Vitoria.wav");
+        Greenfoot.playSound("Vitoria.mp3");
     }
 }

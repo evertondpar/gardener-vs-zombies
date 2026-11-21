@@ -16,19 +16,27 @@ public class TelaInicial extends TelaBase
     public TelaInicial()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super("telainicial.png"); 
+        super("telainicial.jpg"); 
     }
     
     //sobreescrita do método act do próprio greenfoot
     @Override
     public void act(){
         iniciarJogo();
+        irParaInstrucoes();
     }
     
     //identifica o clique da tecla enter e inica jogo
     public void iniciarJogo(){
         if(Greenfoot.isKeyDown("enter")){
             Greenfoot.setWorld(new FaseUm());
+        }
+    }
+    
+    //identifica o clique da tecla enter e inica jogo
+    public void irParaInstrucoes(){
+        if(Greenfoot.isKeyDown("i")){
+            Greenfoot.setWorld(new TelaInstrucoes());
         }
     }
 }

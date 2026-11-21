@@ -19,7 +19,7 @@ public class FaseUm extends MundoBase
      */
     public FaseUm()
     {
-        super("fase1.png",9);
+        super("fase1.jpg",9);
         montarCenario();
         iniciarFase();
         iniciarMusica();
