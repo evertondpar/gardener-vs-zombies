@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Zumbi extends Inimigo
 {
     public Zumbi(){
-        super(6, 1, 10, "zumbi.png");
+        super(6, 1, "zumbi.png");
         
     }
     

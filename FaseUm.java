@@ -71,7 +71,7 @@ public class FaseUm extends MundoBase
                 //gera um zumbis normais e um fortes
                 //ambos com alturas aleatorias, porem na extrema direita do mapa
                 int posYForte = Greenfoot.getRandomNumber(450) + 150;
-                addObject(new ZumbiForte(), 1150, posYForte);
+                addObject(new ZumbiCorredor(), 1150, posYForte);
                 int posYNormalUm = Greenfoot.getRandomNumber(450) + 150;
                 addObject(new Zumbi(), 1150, posYNormalUm);
                 int posYNormalDois = Greenfoot.getRandomNumber(450) + 150;

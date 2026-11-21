@@ -11,16 +11,16 @@ public class Inimigo extends Actor
     private int vida;
     private int velocidade;
     private int velocidadeOriginal; //guarda a velocidade com que o zumbi nasceu para o congelamento acabar
-    private int dano;
+    
     private int tempoCongelado = 0;
     private int direcaoDesvio = 0; //usado para o zumbi desviar de um obstaculo criado
     private static final int VELOCIDADE_DESVIO = 5;
     
-    public Inimigo(int vida, int velocidade, int dano, String imagemInimigo){
+    public Inimigo(int vida, int velocidade, String imagemInimigo){
         this.vida = vida;
         this.velocidade = velocidade;
         this.velocidadeOriginal = velocidade;
-        this.dano = dano;
+        
         definirImagem(imagemInimigo);
     }
     
@@ -95,10 +95,6 @@ public class Inimigo extends Actor
         GreenfootImage imagem = new GreenfootImage(diretorioImagem);
         imagem.scale(80, 120); 
         setImage(imagem);
-    }
-    
-    public int obterDano(){
-        return dano;
     }
     
     public int obterVelocidade(){
