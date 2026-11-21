@@ -91,7 +91,7 @@ public class Inimigo extends Actor
         tempoCongelado = 300;
     }
     
-    private void definirImagem(String diretorioImagem){
+    protected void definirImagem(String diretorioImagem){
         GreenfootImage imagem = new GreenfootImage(diretorioImagem);
         imagem.scale(80, 120); 
         setImage(imagem);
@@ -99,6 +99,10 @@ public class Inimigo extends Actor
     
     public int obterVelocidade(){
         return velocidade;
+    }
+
+    public int obterVida(){
+        return vida;
     }
     
     public void receberDano(int quantidadeDeDano){
