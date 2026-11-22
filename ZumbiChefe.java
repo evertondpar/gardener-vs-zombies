@@ -18,6 +18,30 @@ public class ZumbiChefe extends Inimigo
      */
     public void act()
     {
-        // Add your action code here.
+        super.act();
+    }
+    
+    @Override
+    public void receberDano(int quantidadeDano){
+        int vidaAtual = obterVida();
+        
+        if(vidaAtual > 0 && (vidaAtual - quantidadeDano) <= 0){
+            getWorld().addObject(new Trofeu(), getX(), getY());
+        }
+        
+        super.receberDano(quantidadeDano);
+        
+        if(obterVida() > 0){
+            atualizarImagem();
+        }
+    }
+
+    private void atualizarImagem(){
+        int vida = obterVida();
+        if(vida <= 13 && vida > 7){
+            definirImagem("zumbi_gigante_sem_placa.png");
+        }else if(vida <= 7){
+            definirImagem("zumbi_gigante_final.png");
+        }
     }
 }

@@ -18,11 +18,12 @@ public class MundoBase extends TelaBase
     private GreenfootSound musicaDeFundo = new GreenfootSound("musica_fundo.mp3");
     private boolean poderColetado; //controla se o jogador já pegou o poder
     private int temporizadorZumbis; //nascimento dos zumbis a cada periodo
+    private Jardineiro jardineiro;
     /**
      * Constructor for objects of class MundoBase.
      * 
      */
-    public MundoBase(String background,int inimigosVivos)
+    public MundoBase(String background,int inimigosVivos, Jardineiro jardineiro)
     {    
         super(background);
         this.inimigosVivos = inimigosVivos;
@@ -30,6 +31,15 @@ public class MundoBase extends TelaBase
         this.pontuacao = 0;
         this.poderColetado = false;
         this.temporizadorZumbis = 0;
+        this.jardineiro = jardineiro;
+    }
+    
+    protected void setJardineiro(Jardineiro novoJardineiro){
+        this.jardineiro = novoJardineiro;
+    }
+    
+    protected Jardineiro obterJardineiro(){
+        return jardineiro;
     }
     
     public boolean obterPoderColetado(){

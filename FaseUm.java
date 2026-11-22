@@ -10,14 +10,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class FaseUm extends MundoBase
 {
     private int contadorLapide = 0; // tempo para gerar uma nova lapide
-
     /**
      * Constructor for objects of class FaseUm.
      * 
      */
     public FaseUm()
     {
-        super("fase1.jpg",9);
+        super("fase1.jpg",9, new Jardineiro());
         montarCenario();
         iniciarFase();
         iniciarMusica();
@@ -46,8 +45,8 @@ public class FaseUm extends MundoBase
      * 
      */
     private void montarCenario() {
-        Jardineiro jardineiro = new Jardineiro();
-        addObject(jardineiro, 300, 580);
+        
+        addObject(obterJardineiro(), 300, 580);
 
         addObject(new PoderVerde(), 600, 580);
     }
@@ -56,7 +55,7 @@ public class FaseUm extends MundoBase
         //se acabar os inimigos, não gera mais
         if(getInimigosVivos() <= 0){
             //executarVitoria();
-            Greenfoot.setWorld(new FaseDois());
+            Greenfoot.setWorld(new FaseDois(obterJardineiro()));
             return;
         }
         

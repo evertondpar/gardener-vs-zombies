@@ -14,9 +14,9 @@ public class FaseDois extends MundoBase
      * Constructor for objects of class FaseUm.
      * 
      */
-    public FaseDois()
+    public FaseDois(Jardineiro jardineiroAnterior)
     {
-        super("fase2.jpg",9);
+        super("fase2.jpg",9, jardineiroAnterior);
         montarCenario();
         iniciarFase();
         iniciarMusica();
@@ -45,8 +45,8 @@ public class FaseDois extends MundoBase
      * 
      */
     private void montarCenario() {
-        Jardineiro jardineiro = new Jardineiro();
-        addObject(jardineiro, 300, 580);
+        //Jardineiro jardineiro = new Jardineiro();
+        addObject(obterJardineiro(), 300, 580);
 
         addObject(new PoderAzul(), 600, 580);
     }
@@ -54,7 +54,8 @@ public class FaseDois extends MundoBase
     private void gerarZumbi(){
         //se acabar os inimigos, não gera mais
         if(getInimigosVivos() <= 0){
-            executarVitoria();
+            //executarVitoria();
+            Greenfoot.setWorld(new FaseTres(obterJardineiro()));
             return;
         }
         

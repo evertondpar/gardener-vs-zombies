@@ -137,8 +137,9 @@ public class Jardineiro extends Actor
             item.removerItem();
 
             //troca imagem do jardineiro dependendo do seu poder
-            if(nomePoder.equals("poderAzul")){
-                definirImagem("jardineiro_poderGelo.png");
+            if(nomePoder.equals("trofeu")){
+                MundoBase mundo = (MundoBase) getWorld();
+                mundo.executarVitoria();
             }else{
                 definirImagem("jardineiro_"+nomePoder+".png");
             }
