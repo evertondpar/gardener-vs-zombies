@@ -17,9 +17,9 @@ public class FaseTres extends MundoBase
      * Constructor for objects of class FaseUm.
      * 
      */
-    public FaseTres(Jardineiro jardineiroAnterior)
+    public FaseTres(Jardineiro jardineiroAnterior, int pontuacaoAnterior)
     {
-        super("fase_final.jpg", 12, jardineiroAnterior);
+        super("fase_final.jpg", 12, jardineiroAnterior, pontuacaoAnterior);
         montarCenario();
         iniciarFase();
         iniciarMusica();
@@ -41,7 +41,7 @@ public class FaseTres extends MundoBase
             }
             verificarChefeMorto();
             gerarZumbi();
-            gerarLapide();
+            //gerarLapide();
         }
     }
 

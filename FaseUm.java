@@ -16,7 +16,7 @@ public class FaseUm extends MundoBase
      */
     public FaseUm()
     {
-        super("fase1.jpg",9, new Jardineiro());
+        super("fase1.jpg",9, new Jardineiro(), 0);
         montarCenario();
         iniciarFase();
         iniciarMusica();
@@ -55,7 +55,7 @@ public class FaseUm extends MundoBase
         //se acabar os inimigos, não gera mais
         if(getInimigosVivos() <= 0){
             //executarVitoria();
-            Greenfoot.setWorld(new FaseDois(obterJardineiro()));
+            Greenfoot.setWorld(new FaseDois(obterJardineiro(), getPontuacao()));
             return;
         }
         

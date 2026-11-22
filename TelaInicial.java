@@ -30,6 +30,8 @@ public class TelaInicial extends TelaBase
     public void iniciarJogo(){
         if(Greenfoot.isKeyDown("enter")){
             Greenfoot.setWorld(new FaseUm());
+            //Jardineiro jardineiro = new Jardineiro();
+            //Greenfoot.setWorld(new FaseDois(jardineiro));
         }
     }
     

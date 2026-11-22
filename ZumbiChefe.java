@@ -27,6 +27,7 @@ public class ZumbiChefe extends Inimigo
         
         if(vidaAtual > 0 && (vidaAtual - quantidadeDano) <= 0){
             getWorld().addObject(new Trofeu(), getX(), getY());
+            Greenfoot.playSound("monstro_morrendo.mp3");
         }
         
         super.receberDano(quantidadeDano);

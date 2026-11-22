@@ -128,11 +128,14 @@ public class Jardineiro extends Actor
 
         //verifica se o item é existe
         if(item != null){
-            Greenfoot.playSound("coleta_poder.mp3");
+            
             //pega nome do poder concedido pelo item
             String nomePoder = item.getNomePoder();
+            
+            tocarSomColetaItem(nomePoder);
             //atualiza poder atual
             setPoderAtual(nomePoder);
+            
             //remove item do mundo
             item.removerItem();
 
@@ -143,6 +146,14 @@ public class Jardineiro extends Actor
             }else{
                 definirImagem("jardineiro_"+nomePoder+".png");
             }
+        }
+    }
+    
+    private void tocarSomColetaItem(String nomeItem){
+        if(nomeItem.equals("poderVerde")){
+            Greenfoot.playSound("coleta_poder.mp3");
+        }else if(nomeItem.equals("poderAzul")){
+            Greenfoot.playSound("coleta_poder-gelo.mp3");
         }
     }
 

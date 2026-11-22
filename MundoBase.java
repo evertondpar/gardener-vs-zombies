@@ -23,12 +23,12 @@ public class MundoBase extends TelaBase
      * Constructor for objects of class MundoBase.
      * 
      */
-    public MundoBase(String background,int inimigosVivos, Jardineiro jardineiro)
+    public MundoBase(String background,int inimigosVivos, Jardineiro jardineiro, int pontuacao)
     {    
         super(background);
         this.inimigosVivos = inimigosVivos;
         this.inimigosNaTela = 0;
-        this.pontuacao = 0;
+        this.pontuacao = pontuacao;
         this.poderColetado = false;
         this.temporizadorZumbis = 0;
         this.jardineiro = jardineiro;
