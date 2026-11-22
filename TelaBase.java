@@ -32,4 +32,10 @@ public class TelaBase extends World
         //passa a imagem como fundo para o mundo
         setBackground(fundo);
     }
+    
+    protected void iniciarJogo(){
+        if(Greenfoot.isKeyDown("enter")){
+            Greenfoot.setWorld(new FaseUm());
+        }
+    }
 }

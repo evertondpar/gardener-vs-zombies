@@ -88,13 +88,11 @@ public class MundoBase extends TelaBase
     public void executarDerrota() {
         musicaDeFundo.stop();
         Greenfoot.setWorld(new TelaDerrota(pontuacao));
-        Greenfoot.stop(); // Para o jogo imediatamente
     }
     
     public void executarVitoria() {
         musicaDeFundo.stop();
         Greenfoot.setWorld(new TelaVitoria(pontuacao));
-        Greenfoot.stop(); // Para o jogo imediatamente
     }
     
     /**

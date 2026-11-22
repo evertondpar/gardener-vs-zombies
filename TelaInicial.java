@@ -19,20 +19,9 @@ public class TelaInicial extends TelaBase
         super("telainicial.jpg"); 
     }
     
-    //sobreescrita do método act do próprio greenfoot
-    @Override
     public void act(){
         iniciarJogo();
         irParaInstrucoes();
-    }
-    
-    //identifica o clique da tecla enter e inica jogo
-    public void iniciarJogo(){
-        if(Greenfoot.isKeyDown("enter")){
-            Greenfoot.setWorld(new FaseUm());
-            //Jardineiro jardineiro = new Jardineiro();
-            //Greenfoot.setWorld(new FaseDois(jardineiro));
-        }
     }
     
     //identifica o clique da tecla enter e inica jogo

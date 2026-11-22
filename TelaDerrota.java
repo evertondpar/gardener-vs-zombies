@@ -19,4 +19,8 @@ public class TelaDerrota extends TelaBase
         showText("Pontuação: " + pontuacao, getWidth()/2, getHeight()/4);
         Greenfoot.playSound("derrotado.mp3");
     }
+    
+    public void act(){
+        iniciarJogo();
+    }
 }

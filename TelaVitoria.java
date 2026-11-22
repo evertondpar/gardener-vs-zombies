@@ -19,4 +19,8 @@ public class TelaVitoria extends TelaBase
         showText("Pontuação: " + pontuacao, getWidth()/2, getHeight()/4);
         Greenfoot.playSound("Vitoria.mp3");
     }
+    
+    public void act(){
+        iniciarJogo();
+    }
 }
