@@ -29,8 +29,10 @@ public class FaseUm extends MundoBase
             boolean poderFoiColetado = super.obterPoderColetado();
             if(!poderFoiColetado && getObjects(PoderVerde.class).isEmpty()){
                 super.setPoderColetado(true);
+                MundoBase.iniciarCronometro(); // cronometro inicializa
             }
-
+            atualizarCronometro(); // cronometro rodando
+            
             //so comeca a gerar zumbi e lapide se o poder ja foi coletado
             if(poderFoiColetado){
                 gerarZumbi();

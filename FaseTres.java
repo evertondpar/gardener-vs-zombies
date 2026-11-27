@@ -39,6 +39,8 @@ public class FaseTres extends MundoBase
                     chefeGerado = true;
                 }
             }
+            atualizarCronometro(); // cronometro rodando
+            
             verificarChefeMorto();
             gerarZumbi();
             //gerarLapide();

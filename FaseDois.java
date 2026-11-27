@@ -30,7 +30,8 @@ public class FaseDois extends MundoBase
             if(!poderFoiColetado && getObjects(PoderAzul.class).isEmpty()){
                 super.setPoderColetado(true);
             }
-
+            atualizarCronometro(); // cronometro rodando
+            
             //so comeca a gerar zumbi e lapide se o poder ja foi coletado
             if(poderFoiColetado){
                 gerarZumbi();
